@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 import { initializeApp } from "firebase/app";
 import { getDatabase, push, ref, onValue } from'firebase/database';
+import { useState, useEffect } from 'react';
 
 export default function App() {
   const firebaseConfig = {
@@ -10,7 +11,8 @@ export default function App() {
     projectId: "teht-7ed96",
     storageBucket: "teht-7ed96.appspot.com",
     messagingSenderId: "362009509230",
-    appId: "1:362009509230:web:9ee545ead95a6025d8157f"
+    appId: "1:362009509230:web:9ee545ead95a6025d8157f",
+    databaseURL: "https://teht-7ed96-default-rtdb.europe-west1.firebasedatabase.app"
   };
   
   // Initialize Firebase
@@ -37,6 +39,7 @@ export default function App() {
     })
   }, []);
 
+  
   return (
     <View style={styles.container}>
       <View style={styles.up}>
