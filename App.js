@@ -35,9 +35,12 @@ export default function App() {
     const itemsRef = ref(database, 'items/');
     onValue(itemsRef, (snapshot) => {
       const data = snapshot.val();
-      setItems(Object.values(data));
+      if (data != null ) {
+        setItems(Object.values(data));
+      }
     })
   }, []);
+
 
   
   return (
@@ -50,7 +53,7 @@ export default function App() {
       <View style={styles.down}>
         <Text>Shopping List {'\n'}</Text>
         <FlatList 
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={item => item.id}
           renderItem={({item}) =>
             <View style={{flexDirection: "row", marginTop: 3}}>
               <Text>{item.product}, {item.amount} </Text>              
